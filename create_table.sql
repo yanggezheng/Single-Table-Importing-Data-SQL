@@ -7,6 +7,7 @@
 --     sat_math_avg_score numeric,
 --     sat_writing_avg_score numeric
 -- );
+DROP TABLE IF EXISTS avg_sat
 CREATE TABLE avg_sat(
     dbn text PRIMARY KEY,
     school_name text CONSTRAINT school_name_not_null NOT NULL,

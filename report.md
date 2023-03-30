@@ -21,6 +21,12 @@
 
 # Table Design
 I set the type to be all text, because the missing values were replaced with 's'. And I set a constraint to the school name (not null)
+dbn is the district number and school number (text)
+school_name name of the school (text)
+sat_critical_reading_avg_score the score of SAT part 1 (text)
+sat_math_avg_score the score of SAT part 2 (text)
+sat_writing_avg_score the score of SAT part 3 (text)
+
 
 # Import
 I have encountered an error where the relative path does not work. I copied the file to /tmp and used the absolute path. The problem was solved
@@ -57,14 +63,17 @@ Indexes:
 
 
 # Query Results
-1,
+```
+### 1. the total number of rows in the database
 homework06-# ;
  count 
 -------
    478
 (1 row)
 
-2,
+```
+```
+### 2. show the first 15 rows, but only display 3 columns (your choice)
 homework06=# select dbn, school_name, number_of_sat_test_takers from avg_sat limit 15;
   dbn   |                          school_name                           | number_of_sat_test_takers 
 --------+----------------------------------------------------------------+---------------------------
@@ -84,8 +93,9 @@ homework06=# select dbn, school_name, number_of_sat_test_takers from avg_sat lim
  02M298 | PACE HIGH SCHOOL                                               |                        85
  02M300 | URBAN ASSEMBLY SCHOOL OF DESIGN AND CONSTRUCTION, THE          |                        48
 (15 rows)
-
-3,
+```
+```
+### 3. do the same as above, but chose a column to sort on, and sort in descending order
 homework06=# select dbn, school_name, number_of_sat_test_takers from avg_sat order by number_of_sat_test_takers desc limit 15;
   dbn   |                             school_name                              | number_of_sat_test_takers 
 --------+----------------------------------------------------------------------+---------------------------
@@ -106,13 +116,20 @@ homework06=# select dbn, school_name, number_of_sat_test_takers from avg_sat ord
  22K425 | JAMES MADISON HIGH SCHOOL                                            |                       518
 (15 rows)
 
-4,
+```
+```
+### 4. add a new column without a default value
 ALTER TABLE
 
-5,
+```
+```
+### 5. set the value of that new column
 UPDATE 478
 
-6,
+```
+```
+###
+6. show only the unique (non duplicates) of a column of your choice
  number_of_sat_test_takers 
 ---------------------------
                         29
@@ -158,8 +175,10 @@ UPDATE 478
                         57
                         72
 :
-
-7,
+```
+```
+###
+7.group rows together by a column value (your choice) and use an aggregate function to calculate something about that group
  left | count 
 ------+-------
  75   |     7
@@ -197,8 +216,10 @@ UPDATE 478
  05   |    10
  16   |     5
 (34 rows)
-
-8,
+```
+```
+###
+8. now, using the same grouping query or creating another one, find a way to filter the query results based on the values for the groups
  left | count 
 ------+-------
  75   |     7
@@ -226,15 +247,19 @@ UPDATE 478
  16   |     5
  26   |     5
 (24 rows)
-
-9,
+```
+```
+###
+9.number of people taken the exam
   sum  
 -------
  46445
 (1 row)
 
-
-10,
+```
+```
+###
+10.average score of each school
  total 
 -------
      0
@@ -258,8 +283,10 @@ UPDATE 478
   1200
   1188
 (20 rows)
-
-11,
+```
+```
+###
+11.the number of schools in each district
  left | count 
 ------+-------
  75   |     7
@@ -297,8 +324,10 @@ UPDATE 478
  05   |    10
  16   |     5
 (34 rows)
-
-12,
+```
+```
+###
+12.the average score of each students
        ?column?        
 -----------------------
  1326.6839487565938206
